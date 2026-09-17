@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Fuente de verdad: datos/ en la raíz. Se sincroniza a public/datos/
+      # para que el artefacto de Pages incluya los CSV (sin modificar su formato).
+      - name: Sync CSV data into public/
+        run: |
+          mkdir -p public/datos
+          cp datos/equipos.csv public/datos/equipos.csv
+          cp datos/goles.csv public/datos/goles.csv
+          cp datos/asistencias.csv public/datos/asistencias.csv
+          ls -la public public/datos
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

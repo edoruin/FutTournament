@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Goleadores — Copa Supercampeones</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { theme: { extend: { colors: { primary: '#0037b0', secondary: '#006c4a' } } } };</script>
+<link href="site.css" rel="stylesheet"/>
+</head>
+<body data-page="goles" class="flex flex-col min-h-screen bg-white">
+<header class="fixed top-0 w-full z-50 pt-safe bg-[#0a0a0c]">
+  <div class="h-16 px-4 flex items-center gap-3">
+    <button data-back title="Atrás" aria-label="Volver atrás" class="w-9 h-9 rounded-full bg-white/10 text-white flex items-center justify-center hover:bg-white/20 active:scale-95 transition-all">
+      <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+    </button>
+    <span class="material-symbols-outlined text-amber-300">sports_soccer</span>
+    <h1 class="font-headline-sm text-white uppercase">Bota de Oro</h1>
+  </div>
+</header>
+<main class="anim-page pt-20 pb-28 px-4 max-w-4xl mx-auto w-full">
+  <div class="match-card overflow-hidden">
+    <table class="w-full">
+      <thead><tr class="table-head text-left">
+        <th class="p-3">#</th><th class="p-3">Jugador</th><th class="p-3 hidden sm:table-cell">Equipo</th><th class="p-3 text-right">Goles</th>
+      </tr></thead>
+      <tbody id="goles-body"></tbody>
+    </table>
+  </div>
+</main>
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#0a0a0c]">
+  <div class="flex justify-around items-center h-16">
+    <a href="index.html" class="flex flex-col items-center gap-1 text-white/70"><span class="material-symbols-outlined text-[22px]">account_tree</span><span class="font-label-xs uppercase">Cuadro</span></a>
+    <a href="goles.html" class="flex flex-col items-center gap-1 text-[#85f8c4] bg-white/10 rounded-lg px-3 py-1"><span class="material-symbols-outlined text-[22px]">sports_soccer</span><span class="font-label-xs uppercase">Goles</span></a>
+    <a href="asistencias.html" class="flex flex-col items-center gap-1 text-white/70"><span class="material-symbols-outlined text-[22px]">assistant</span><span class="font-label-xs uppercase">Asist.</span></a>
+    <a href="equipos.html" class="flex flex-col items-center gap-1 text-white/70"><span class="material-symbols-outlined text-[22px]">groups</span><span class="font-label-xs uppercase">Equipos</span></a>
+  </div>
+</nav>
+<script src="js/app.js"></script>
+</body>
+</html>

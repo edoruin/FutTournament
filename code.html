@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,400;0,700;0,800;0,900;1,700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100%;margin:0;padding:0;background-color:#ffffff;}body{overscroll-behavior:none;font-family:'Chivo',sans-serif;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'on-error': '#ffffff', 'surface-container-lowest': '#ffffff', 'secondary-fixed': '#85f8c4', 'on-primary-fixed': '#001551', 'tertiary-fixed-dim': '#ffb95f', 'on-background': '#171b26', 'primary-fixed': '#dce1ff', 'surface-variant': '#dfe2f1', 'surface-container-highest': '#dfe2f1', 'inverse-surface': '#2c303b', 'primary': '#0037b0', 'on-secondary-container': '#00714e', 'on-surface-variant': '#434655', 'surface-bright': '#faf8ff', 'surface': '#ffffff', 'secondary-fixed-dim': '#68dba9', 'on-error-container': '#93000a', 'on-secondary-fixed-variant': '#005137', 'error-container': '#ffdad6', 'on-secondary-fixed': '#002114', 'on-tertiary-container': '#ffcb8f', 'on-secondary': '#ffffff', 'secondary': '#006c4a', 'primary-fixed-dim': '#b7c4ff', 'on-tertiary-fixed': '#2a1700', 'inverse-on-surface': '#eef0ff', 'outline-variant': '#c4c5d7', 'surface-tint': '#2151da', 'tertiary-fixed': '#ffddb8', 'surface-container': '#ebedfc', 'tertiary': '#623c00', 'on-primary-container': '#cad3ff', 'secondary-container': '#82f5c1', 'tertiary-container': '#825100', 'error': '#ba1a1a', 'on-primary-fixed-variant': '#0039b5', 'outline': '#747686', 'on-tertiary-fixed-variant': '#653e00', 'surface-container-high': '#e5e7f6', 'surface-container-low': '#f2f3ff', 'on-surface': '#171b26', 'inverse-primary': '#b7c4ff', 'background': '#ffffff', 'primary-container': '#1d4ed8', 'surface-dim': '#d7d9e8', 'on-primary': '#ffffff', 'on-tertiary': '#ffffff' }, borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' }, spacing: { 'gutter': '1.25rem', 'margin': '1rem', 'space-lg': '1.5rem', 'margin-tablet': '2rem', 'gutter-desktop': '2rem', 'space-xl': '2.5rem', 'space-sm': '0.5rem', 'space-md': '1rem', 'space-xs': '0.25rem', 'margin-desktop': '3rem' }, fontFamily: { 'label-lg': ['Chivo'], 'display-hero-mobile': ['Chivo'], 'label-xs': ['Chivo'], 'body-lg': ['Chivo'], 'headline-lg-mobile': ['Chivo'], 'body-sm': ['Chivo'], 'display-hero': ['Chivo'], 'scoreboard-num': ['Chivo'], 'body-md': ['Chivo'], 'headline-sm': ['Chivo'], 'headline-md': ['Chivo'], 'headline-lg': ['Chivo'], 'label-md': ['Chivo'] }, fontSize: { 'label-lg': ['14px', { lineHeight: '18px', letterSpacing: '0.04em', fontWeight: '700' }], 'display-hero-mobile': ['36px', { lineHeight: '40px', letterSpacing: '-0.02em', fontWeight: '900' }], 'label-xs': ['10px', { lineHeight: '14px', letterSpacing: '0.08em', fontWeight: '800' }], 'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }], 'headline-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.01em', fontWeight: '800' }], 'body-sm': ['13px', { lineHeight: '18px', fontWeight: '400' }], 'display-hero': ['56px', { lineHeight: '60px', letterSpacing: '-0.03em', fontWeight: '900' }], 'scoreboard-num': ['48px', { lineHeight: '48px', letterSpacing: '-0.04em', fontWeight: '900' }], 'body-md': ['15px', { lineHeight: '22px', fontWeight: '400' }], 'headline-sm': ['18px', { lineHeight: '24px', fontWeight: '700' }], 'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '-0.01em', fontWeight: '700' }], 'headline-lg': ['36px', { lineHeight: '44px', letterSpacing: '-0.02em', fontWeight: '800' }], 'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.06em', fontWeight: '700' }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-[#0a0a0c] shadow-[0_4px_20px_rgba(0,0,0,0.35)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-inner"><svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M5 3h14v2H5V3zm2 4h10v2a5 5 0 0 1-4 4.9V17h3v2H8v-2h3v-3.1A5 5 0 0 1 7 9V7zm2 2v1a3 3 0 0 0 6 0V9H9zm-6 0h2v2a7 7 0 0 0 2.1 5L5.7 17.4A8.96 8.96 0 0 1 3 11V9zm16 2a7 7 0 0 0 2.1-5H19v2a8.96 8.96 0 0 1-2.7 6.4l1.4 1.4A7 7 0 0 0 21 11z"></path></svg></div><div class="flex flex-col"><span class="font-label-xs text-secondary-fixed uppercase tracking-wider">Torneo Universitario</span><span class="font-headline-sm text-white tracking-tight uppercase leading-none">COPA<span class="text-primary-fixed">SUPERCAMPEONES</span></span></div></div><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 px-margin bg-surface"><div class="flex flex-col w-full">
+<!-- Dynamic Action Header & Live Indicator Strip -->
+<div class="flex flex-col gap-space-sm pt-space-xs pb-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-error text-on-error font-label-xs uppercase tracking-wider animate-pulse">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-container-lowest mr-1.5 inline-block"></span> En Vivo
+        </span>
+<span class="text-on-surface-variant font-label-xs tracking-wider uppercase">Fase Eliminatoria Directa</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-xs text-primary font-bold">8 Facultades</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-xs text-on-surface-variant">Edición 2025</span>
+</div>
+</div>
+<!-- Vibrant Action Bar -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 no-scrollbar">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-secondary text-on-secondary font-label-md whitespace-nowrap shadow-sm hover:opacity-95 active:scale-95 transition-all" id="btn-refresh">
+<span class="material-symbols-outlined text-[18px]">cached</span>
+<span>Actualizar Marcadores</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-primary-container text-on-primary font-label-md whitespace-nowrap shadow-sm hover:opacity-95 active:scale-95 transition-all" id="btn-toggle-json-quick">
+<span class="material-symbols-outlined text-[18px]">data_object</span>
+<span>Ver JSON del Bracket</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-tertiary-container text-tertiary-fixed font-label-md whitespace-nowrap shadow-sm hover:opacity-95 active:scale-95 transition-all" id="btn-key-details">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<span>Detalles Llave</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-tint text-on-primary font-label-md whitespace-nowrap shadow-sm hover:opacity-95 active:scale-95 transition-all" id="btn-download">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Descargar Fixture</span>
+</button>
+</div>
+</div>
+<!-- Stage Navigation Bar -->
+<div class="flex flex-col gap-space-xs mb-space-md">
+<div class="p-1 rounded-xl bg-surface-container flex items-center justify-between gap-1 overflow-x-auto no-scrollbar">
+<button class="tab-stage flex-1 py-1.5 px-3 rounded-lg font-label-md uppercase tracking-wider text-center transition-all bg-surface-container-lowest text-primary shadow-sm" data-stage="all">
+        Vista Completa
+      </button>
+<button class="tab-stage flex-1 py-1.5 px-3 rounded-lg font-label-md uppercase tracking-wider text-center transition-all text-on-surface-variant hover:text-primary" data-stage="qf">
+        Cuartos
+      </button>
+<button class="tab-stage flex-1 py-1.5 px-3 rounded-lg font-label-md uppercase tracking-wider text-center transition-all text-on-surface-variant hover:text-primary" data-stage="sf">
+        Semis
+      </button>
+<button class="tab-stage flex-1 py-1.5 px-3 rounded-lg font-label-md uppercase tracking-wider text-center transition-all text-on-surface-variant hover:text-primary" data-stage="fn">
+        Gran Final
+      </button>
+</div>
+</div>
+<!-- TOURNAMENT BRACKET SECTION -->
+<section class="flex flex-col gap-space-md mb-space-lg">
+<!-- Notice Banner -->
+<div class="rounded-xl bg-surface-container-low p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-xs text-on-surface uppercase tracking-wide">Gran Final Definida: Derecho vs Arquitectura</span>
+</div>
+<span class="font-label-xs font-bold text-primary">Domingo 16:30 hs</span>
+</div>
+<!-- Bracket Interactive Container -->
+<div class="overflow-x-auto pb-space-sm -mx-margin px-margin">
+<div class="min-w-[760px] flex flex-row items-stretch gap-4 select-none">
+<!-- ROUND 1: CUARTOS DE FINAL -->
+<div class="stage-col flex-1 flex flex-col justify-between gap-4" id="col-qf">
+<div class="flex items-center justify-between pb-1">
+<span class="font-label-xs font-extrabold uppercase text-primary tracking-wider">Cuartos de Final (4)</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-xs">Ida/Vuelta</span>
+</div>
+<!-- QF Match 1 -->
+<div class="match-card rounded-xl bg-surface-container-lowest p-3 shadow-sm flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-on-surface-variant font-medium">Llave A • Finalizado</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary font-label-xs font-bold">IS</div>
+<span class="font-body-md font-bold text-primary">Ing. Sistemas</span>
+</div>
+<span class="font-headline-sm text-primary">3</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-xs font-bold">ME</div>
+<span class="font-body-md text-on-surface-variant">Medicina</span>
+</div>
+<span class="font-headline-sm text-on-surface-variant">1</span>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<span class="font-label-xs text-secondary font-bold uppercase tracking-wider">Avanza: Sistemas</span>
+</div>
+</div>
+<!-- QF Match 2 -->
+<div class="match-card rounded-xl bg-surface-container-lowest p-3 shadow-sm flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-on-surface-variant font-medium">Llave B • Finalizado</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-label-xs font-bold">DE</div>
+<span class="font-body-md font-bold text-primary">Derecho</span>
+</div>
+<span class="font-headline-sm text-primary">2</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-xs font-bold">EC</div>
+<span class="font-body-md text-on-surface-variant">Economía</span>
+</div>
+<span class="font-headline-sm text-on-surface-variant">0</span>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<span class="font-label-xs text-secondary font-bold uppercase tracking-wider">Avanza: Derecho</span>
+</div>
+</div>
+<!-- QF Match 3 -->
+<div class="match-card rounded-xl bg-surface-container-lowest p-3 shadow-sm flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-on-surface-variant font-medium">Llave C • Penales</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-tint flex items-center justify-center text-on-primary font-label-xs font-bold">AR</div>
+<div class="flex flex-col">
+<span class="font-body-md font-bold text-primary leading-tight">Arquitectura</span>
+<span class="font-label-xs text-secondary font-bold">(4 pen.)</span>
+</div>
+</div>
+<span class="font-headline-sm text-primary">2</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-xs font-bold">CS</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface-variant leading-tight">Cs. Salud</span>
+<span class="font-label-xs text-on-surface-variant">(2 pen.)</span>
+</div>
+</div>
+<span class="font-headline-sm text-on-surface-variant">2</span>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<span class="font-label-xs text-secondary font-bold uppercase tracking-wider">Avanza: Arquitectura</span>
+</div>
+</div>
+<!-- QF Match 4 -->
+<div class="match-card rounded-xl bg-surface-container-lowest p-3 shadow-sm flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-on-surface-variant font-medium">Llave D • Finalizado</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary font-label-xs font-bold">IC</div>
+<span class="font-body-md font-bold text-primary">Ing. Civil</span>
+</div>
+<span class="font-headline-sm text-primary">2</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-xs font-bold">AD</div>
+<span class="font-body-md text-on-surface-variant">Administración</span>
+</div>
+<span class="font-headline-sm text-on-surface-variant">1</span>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<span class="font-label-xs text-secondary font-bold uppercase tracking-wider">Avanza: Ing. Civil</span>
+</div>
+</div>
+</div>
+<!-- SVG Clean Tactical Connectors (QF to SF) -->
+<div class="w-8 flex flex-col justify-around py-8">
+<svg class="w-full h-44 text-primary" fill="none" viewbox="0 0 32 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 24 H16 V88 H32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M0 152 H16 V88" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle cx="32" cy="88" fill="currentColor" r="3"></circle>
+</svg>
+<svg class="w-full h-44 text-primary" fill="none" viewbox="0 0 32 176" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 24 H16 V88 H32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M0 152 H16 V88" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle cx="32" cy="88" fill="currentColor" r="3"></circle>
+</svg>
+</div>
+<!-- ROUND 2: SEMIFINALES -->
+<div class="stage-col flex-1 flex flex-col justify-around gap-6" id="col-sf">
+<div class="flex items-center justify-between pb-1">
+<span class="font-label-xs font-extrabold uppercase text-primary tracking-wider">Semifinales (2)</span>
+<span class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-xs">Partido Único</span>
+</div>
+<!-- SF Match 1 -->
+<div class="match-card rounded-xl bg-surface-container-lowest p-3 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-on-surface-variant font-medium">Semi 1 • Estadio Olímpico</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between p-1.5 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-xs font-bold">IS</div>
+<span class="font-body-md text-on-surface-variant">Ing. Sistemas</span>
+</div>
+<span class="font-headline-sm text-on-surface-variant">1</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-label-xs font-bold">DE</div>
+<span class="font-body-md font-bold text-primary">Derecho</span>
+</div>
+<span class="font-headline-sm text-primary">2</span>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<span class="font-label-xs text-secondary font-bold uppercase tracking-wider">Clasifica: Derecho</span>
+</div>
+</div>
+<!-- SF Match 2 -->
+<div class="match-card rounded-xl bg-surface-container-lowest p-3 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-on-surface-variant font-medium">Semi 2 • Campo Central</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between p-1.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-tint flex items-center justify-center text-on-primary font-label-xs font-bold">AR</div>
+<span class="font-body-md font-bold text-primary">Arquitectura</span>
+</div>
+<span class="font-headline-sm text-primary">1</span>
+</div>
+<div class="flex items-center justify-between p-1.5 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant font-label-xs font-bold">IC</div>
+<span class="font-body-md text-on-surface-variant">Ing. Civil</span>
+</div>
+<span class="font-headline-sm text-on-surface-variant">0</span>
+</div>
+</div>
+<div class="flex justify-end pt-1">
+<span class="font-label-xs text-secondary font-bold uppercase tracking-wider">Clasifica: Arquitectura</span>
+</div>
+</div>
+</div>
+<!-- SVG Clean Tactical Connectors (SF to Final) -->
+<div class="w-8 flex flex-col justify-center">
+<svg class="w-full h-80 text-primary" fill="none" viewbox="0 0 32 320" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 70 H16 V160 H32" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M0 250 H16 V160" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle cx="32" cy="160" fill="currentColor" r="4"></circle>
+</svg>
+</div>
+<!-- ROUND 3: GRAN FINAL -->
+<div class="stage-col flex-1 flex flex-col justify-center gap-4" id="col-fn">
+<div class="flex items-center justify-between pb-1">
+<span class="font-label-xs font-extrabold uppercase text-secondary font-bold tracking-wider">Gran Final Única</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-xs font-bold">Trofeo</span>
+</div>
+<!-- Championship Final Match Card -->
+<div class="match-card rounded-xl bg-surface-container-lowest p-4 shadow-md flex flex-col gap-3 relative">
+<div class="flex items-center justify-between">
+<span class="font-label-xs text-primary font-bold uppercase tracking-widest">COPASUPERCAMPEONES 2025</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-container text-tertiary-fixed font-label-xs font-bold">Por Jugar</span>
+</div>
+<!-- Team A: Derecho -->
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm font-bold">
+                  DE
+                </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-primary leading-tight">Derecho</span>
+<span class="font-label-xs text-on-surface-variant font-medium">Invicto en Playoffs</span>
+</div>
+</div>
+<span class="font-headline-lg text-primary">-</span>
+</div>
+<div class="flex items-center justify-center gap-2 py-0.5">
+<span class="w-8 h-0.5 bg-surface-variant"></span>
+<span class="font-label-xs font-bold text-on-surface-variant tracking-wider uppercase">VS</span>
+<span class="w-8 h-0.5 bg-surface-variant"></span>
+</div>
+<!-- Team B: Arquitectura -->
+<div class="p-2 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-tint text-on-primary flex items-center justify-center font-headline-sm font-bold">
+                  AR
+                </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-primary leading-tight">Arquitectura</span>
+<span class="font-label-xs text-on-surface-variant font-medium">Defensa Menos Batida</span>
+</div>
+</div>
+<span class="font-headline-lg text-primary">-</span>
+</div>
+<!-- Stadium Meta -->
+<div class="pt-2 flex items-center justify-between text-on-surface-variant font-label-xs">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary">stadium</span>
+<span>Estadio Mayor Universitario</span>
+</div>
+<span class="font-bold text-primary">16:30 HS</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DATA STRUCTURE & JSON VISUALIZER SECTION -->
+<section class="flex flex-col gap-space-sm mb-space-lg">
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[18px]">schema</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-primary leading-tight">Estructura del Torneo</h3>
+<p class="font-body-sm text-on-surface-variant">Modelo de datos unificado renderizado vía CSS Grid/Flexbox</p>
+</div>
+</div>
+<button class="flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-on-primary font-label-md hover:bg-primary-container transition-all" id="btn-toggle-json">
+<span class="material-symbols-outlined text-[18px]" id="json-icon">visibility</span>
+<span id="json-btn-text">Ver Estructura de Datos JSON</span>
+</button>
+</div>
+<!-- JSON Viewer Box (Collapsible) -->
+<div class="hidden transition-all flex flex-col gap-2" id="json-viewer">
+<div class="p-3 rounded-lg bg-[#0a0a0c] text-white font-mono text-[12px] leading-relaxed overflow-x-auto max-h-72 shadow-inner">
+<pre class="m-0 text-secondary-fixed">{
+  <span class="text-primary-fixed">"tournament"</span>: <span class="text-tertiary-fixed">"CopaSupercampeones"</span>,
+  <span class="text-primary-fixed">"totalTeams"</span>: 8,
+  <span class="text-primary-fixed">"rounds"</span>: [
+    {
+      <span class="text-primary-fixed">"roundName"</span>: <span class="text-tertiary-fixed">"Cuartos de Final"</span>,
+      <span class="text-primary-fixed">"matches"</span>: [
+        { <span class="text-primary-fixed">"id"</span>: <span class="text-tertiary-fixed">"QF1"</span>, <span class="text-primary-fixed">"teamA"</span>: <span class="text-tertiary-fixed">"Ing. Sistemas"</span>, <span class="text-primary-fixed">"scoreA"</span>: 3, <span class="text-primary-fixed">"teamB"</span>: <span class="text-tertiary-fixed">"Medicina"</span>, <span class="text-primary-fixed">"scoreB"</span>: 1, <span class="text-primary-fixed">"winner"</span>: <span class="text-tertiary-fixed">"Ing. Sistemas"</span> },
+        { <span class="text-primary-fixed">"id"</span>: <span class="text-tertiary-fixed">"QF2"</span>, <span class="text-primary-fixed">"teamA"</span>: <span class="text-tertiary-fixed">"Derecho"</span>, <span class="text-primary-fixed">"scoreA"</span>: 2, <span class="text-primary-fixed">"teamB"</span>: <span class="text-tertiary-fixed">"Economía"</span>, <span class="text-primary-fixed">"scoreB"</span>: 0, <span class="text-primary-fixed">"winner"</span>: <span class="text-tertiary-fixed">"Derecho"</span> },
+        { <span class="text-primary-fixed">"id"</span>: <span class="text-tertiary-fixed">"QF3"</span>, <span class="text-primary-fixed">"teamA"</span>: <span class="text-tertiary-fixed">"Arquitectura"</span>, <span class="text-primary-fixed">"scoreA"</span>: <span class="text-tertiary-fixed">"2 (4)"</span>, <span class="text-primary-fixed">"teamB"</span>: <span class="text-tertiary-fixed">"Cs. Salud"</span>, <span class="text-primary-fixed">"scoreB"</span>: <span class="text-tertiary-fixed">"2 (2)"</span>, <span class="text-primary-fixed">"winner"</span>: <span class="text-tertiary-fixed">"Arquitectura"</span> },
+        { <span class="text-primary-fixed">"id"</span>: <span class="text-tertiary-fixed">"QF4"</span>, <span class="text-primary-fixed">"teamA"</span>: <span class="text-tertiary-fixed">"Ing. Civil"</span>, <span class="text-primary-fixed">"scoreA"</span>: 2, <span class="text-primary-fixed">"teamB"</span>: <span class="text-tertiary-fixed">"Administración"</span>, <span class="text-primary-fixed">"scoreB"</span>: 1, <span class="text-primary-fixed">"winner"</span>: <span class="text-tertiary-fixed">"Ing. Civil"</span> }
+      ]
+    },
+    {
+      <span class="text-primary-fixed">"roundName"</span>: <span class="text-tertiary-fixed">"Semifinales"</span>,
+      <span class="text-primary-fixed">"matches"</span>: [
+        { <span class="text-primary-fixed">"id"</span>: <span class="text-tertiary-fixed">"SF1"</span>, <span class="text-primary-fixed">"teamA"</span>: <span class="text-tertiary-fixed">"Ing. Sistemas"</span>, <span class="text-primary-fixed">"scoreA"</span>: 1, <span class="text-primary-fixed">"teamB"</span>: <span class="text-tertiary-fixed">"Derecho"</span>, <span class="text-primary-fixed">"scoreB"</span>: 2, <span class="text-primary-fixed">"winner"</span>: <span class="text-tertiary-fixed">"Derecho"</span> },
+        { <span class="text-primary-fixed">"id"</span>: <span class="text-tertiary-fixed">"SF2"</span>, <span class="text-primary-fixed">"teamA"</span>: <span class="text-tertiary-fixed">"Arquitectura"</span>, <span class="text-primary-fixed">"scoreA"</span>: 1, <span class="text-primary-fixed">"teamB"</span>: <span class="text-tertiary-fixed">"Ing. Civil"</span>, <span class="text-primary-fixed">"scoreB"</span>: 0, <span class="text-primary-fixed">"winner"</span>: <span class="text-tertiary-fixed">"Arquitectura"</span> }
+      ]
+    },
+    {
+      <span class="text-primary-fixed">"roundName"</span>: <span class="text-tertiary-fixed">"Final"</span>,
+      <span class="text-primary-fixed">"matches"</span>: [
+        { <span class="text-primary-fixed">"id"</span>: <span class="text-tertiary-fixed">"FN1"</span>, <span class="text-primary-fixed">"teamA"</span>: <span class="text-tertiary-fixed">"Derecho"</span>, <span class="text-primary-fixed">"teamB"</span>: <span class="text-tertiary-fixed">"Arquitectura"</span>, <span class="text-primary-fixed">"status"</span>: <span class="text-tertiary-fixed">"SCHEDULED"</span>, <span class="text-primary-fixed">"time"</span>: <span class="text-tertiary-fixed">"16:30"</span> }
+      ]
+    }
+  ]
+}</pre>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-xs px-1">
+<span>Fuente: Árbitro General &amp; Sincronización Universitaria</span>
+<button class="text-primary font-bold hover:underline" id="btn-copy-json">Copiar al portapapeles</button>
+</div>
+</div>
+</div>
+</section>
+<!-- QUICK STATS: GOLEADORES & ASISTENCIAS SECTION -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">military_tech</span>
+<h2 class="font-headline-sm text-primary uppercase tracking-tight">Estadísticas Individuales</h2>
+</div>
+<span class="font-label-xs text-on-surface-variant">Actualizado al término de Semifinales</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- TOP SCORERS (BOTA DE ORO) -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-tertiary-container text-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">sports_soccer</span>
+</div>
+<div>
+<span class="font-label-md text-primary block leading-none">Bota de Oro</span>
+<span class="font-label-xs text-on-surface-variant uppercase tracking-wider">Goleadores</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-xs text-primary font-bold">Top 3</span>
+</div>
+<!-- Scorers Podium List -->
+<div class="flex flex-col gap-2">
+<!-- Rank 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-tertiary-container text-tertiary-fixed flex items-center justify-center font-label-xs font-black">
+                1
+              </div>
+<div class="flex flex-col">
+<span class="font-body-md font-bold text-primary leading-tight">Mateo Rossi</span>
+<span class="font-label-xs text-on-surface-variant">Derecho • Delantero</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-primary">7</span>
+<span class="font-label-xs text-on-surface-variant uppercase ml-0.5">goles</span>
+</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-lowest">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-xs font-bold">
+                2
+              </div>
+<div class="flex flex-col">
+<span class="font-body-md font-bold text-on-surface leading-tight">Santiago Silva</span>
+<span class="font-label-xs text-on-surface-variant">Ing. Sistemas • Extremo</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-on-surface">5</span>
+<span class="font-label-xs text-on-surface-variant uppercase ml-0.5">goles</span>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-lowest">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-xs font-bold">
+                3
+              </div>
+<div class="flex flex-col">
+<span class="font-body-md font-bold text-on-surface leading-tight">Lucas Mendoza</span>
+<span class="font-label-xs text-on-surface-variant">Arquitectura • Mediocentro</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-on-surface">4</span>
+<span class="font-label-xs text-on-surface-variant uppercase ml-0.5">goles</span>
+</div>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-surface-container text-primary font-label-md hover:bg-surface-container-high transition-all flex items-center justify-center gap-1">
+<span>Ver Tabla Completa de Goleo</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+<!-- PLAYMAKERS (ASISTENCIAS) -->
+<div class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">assistant</span>
+</div>
+<div>
+<span class="font-label-md text-primary block leading-none">Playmaker</span>
+<span class="font-label-xs text-on-surface-variant uppercase tracking-wider">Máximos Asistidores</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-xs text-primary font-bold">Líderes</span>
+</div>
+<!-- Assists List -->
+<div class="flex flex-col gap-2">
+<!-- Rank 1 Playmaker -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-xs font-black">
+                1
+              </div>
+<div class="flex flex-col">
+<span class="font-body-md font-bold text-primary leading-tight">Julián Castro</span>
+<span class="font-label-xs text-on-surface-variant">Ing. Civil • 12 pases clave</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-primary">4</span>
+<span class="font-label-xs text-on-surface-variant uppercase ml-0.5">asist.</span>
+</div>
+</div>
+<!-- Rank 2 Playmaker -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-lowest">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-xs font-bold">
+                2
+              </div>
+<div class="flex flex-col">
+<span class="font-body-md font-bold text-on-surface leading-tight">Felipe Morales</span>
+<span class="font-label-xs text-on-surface-variant">Derecho • 9 pases clave</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-on-surface">3</span>
+<span class="font-label-xs text-on-surface-variant uppercase ml-0.5">asist.</span>
+</div>
+</div>
+<!-- Rank 3 Playmaker -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-lowest">
+<div class="flex items-center gap-2.5">
+<div class="w-6 h-6 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-label-xs font-bold">
+                3
+              </div>
+<div class="flex flex-col">
+<span class="font-body-md font-bold text-on-surface leading-tight">Tomás Benítez</span>
+<span class="font-label-xs text-on-surface-variant">Arquitectura • 7 pases clave</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-on-surface">3</span>
+<span class="font-label-xs text-on-surface-variant uppercase ml-0.5">asist.</span>
+</div>
+</div>
+</div>
+<button class="w-full py-2 rounded-lg bg-surface-container text-primary font-label-md hover:bg-surface-container-high transition-all flex items-center justify-center gap-1">
+<span>Ver Desglose de Pases Clave</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive Client-side Scripting -->
+<script>
+    (function() {
+      // Toggle JSON View
+      const jsonViewer = document.getElementById('json-viewer');
+      const btnToggleJson = document.getElementById('btn-toggle-json');
+      const btnToggleJsonQuick = document.getElementById('btn-toggle-json-quick');
+      const jsonBtnText = document.getElementById('json-btn-text');
+      const jsonIcon = document.getElementById('json-icon');
+
+      function toggleJSON() {
+        if (!jsonViewer) return;
+        const isHidden = jsonViewer.classList.contains('hidden');
+        if (isHidden) {
+          jsonViewer.classList.remove('hidden');
+          jsonBtnText.textContent = 'Ocultar JSON';
+          jsonIcon.textContent = 'visibility_off';
+          jsonViewer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          jsonViewer.classList.add('hidden');
+          jsonBtnText.textContent = 'Ver Estructura de Datos JSON';
+          jsonIcon.textContent = 'visibility';
+        }
+      }
+
+      if (btnToggleJson) btnToggleJson.addEventListener('click', toggleJSON);
+      if (btnToggleJsonQuick) btnToggleJsonQuick.addEventListener('click', toggleJSON);
+
+      // Copy JSON action
+      const btnCopyJson = document.getElementById('btn-copy-json');
+      if (btnCopyJson) {
+        btnCopyJson.addEventListener('click', function() {
+          const codeEl = jsonViewer.querySelector('pre');
+          if (codeEl && navigator.clipboard) {
+            navigator.clipboard.writeText(codeEl.innerText).then(() => {
+              const prev = btnCopyJson.textContent;
+              btnCopyJson.textContent = '¡Copiado con éxito!';
+              setTimeout(() => { btnCopyJson.textContent = prev; }, 2000);
+            });
+          }
+        });
+      }
+
+      // Stage Filter Selector
+      const tabs = document.querySelectorAll('.tab-stage');
+      const colQf = document.getElementById('col-qf');
+      const colSf = document.getElementById('col-sf');
+      const colFn = document.getElementById('col-fn');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => {
+            t.classList.remove('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+            t.classList.add('text-on-surface-variant');
+          });
+
+          tab.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-sm');
+          tab.classList.remove('text-on-surface-variant');
+
+          const stage = tab.getAttribute('data-stage');
+          if (colQf && colSf && colFn) {
+            if (stage === 'all') {
+              colQf.classList.remove('opacity-25');
+              colSf.classList.remove('opacity-25');
+              colFn.classList.remove('opacity-25');
+            } else if (stage === 'qf') {
+              colQf.classList.remove('opacity-25');
+              colSf.classList.add('opacity-25');
+              colFn.classList.add('opacity-25');
+            } else if (stage === 'sf') {
+              colQf.classList.add('opacity-25');
+              colSf.classList.remove('opacity-25');
+              colFn.classList.add('opacity-25');
+            } else if (stage === 'fn') {
+              colQf.classList.add('opacity-25');
+              colSf.classList.add('opacity-25');
+              colFn.classList.remove('opacity-25');
+            }
+          }
+        });
+      });
+
+      // Quick micro-interaction for scores update
+      const btnRefresh = document.getElementById('btn-refresh');
+      if (btnRefresh) {
+        btnRefresh.addEventListener('click', () => {
+          const icon = btnRefresh.querySelector('.material-symbols-outlined');
+          if (icon) {
+            icon.classList.add('animate-spin');
+            setTimeout(() => {
+              icon.classList.remove('animate-spin');
+            }, 800);
+          }
+        });
+      }
+
+      // Fixture download button reaction
+      const btnDownload = document.getElementById('btn-download');
+      if (btnDownload) {
+        btnDownload.addEventListener('click', () => {
+          alert('Generando reporte PDF vectorial del Fixture CopaSupercampeones 2025...');
+        });
+      }
+
+      // Details Llave button reaction
+      const btnKeyDetails = document.getElementById('btn-key-details');
+      if (btnKeyDetails) {
+        btnKeyDetails.addEventListener('click', () => {
+          alert('Llaves Oficiales:\n- 4 Cuartos definidos\n- Semis completadas\n- Gran Final: Domingo en Estadio Mayor.');
+        });
+      }
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#0a0a0c] shadow-[0_-4px_20px_rgba(0,0,0,0.3)]" data-active-classes="text-secondary-fixed bg-white/10"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 rounded-lg transition-all text-secondary-fixed bg-white/10" data-path="cuadro" href="#"><span class="material-symbols-outlined text-[22px]">account_tree</span><span class="font-label-xs tracking-wider uppercase">Cuadro</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 rounded-lg text-white/70 hover:text-white transition-all" data-path="goleadores" href="#"><span class="material-symbols-outlined text-[22px]">sports_soccer</span><span class="font-label-xs tracking-wider uppercase">Goleadores</span></a><a class="flex flex-col items-center justify-center gap-1 min-w-[64px] h-12 rounded-lg text-white/70 hover:text-white transition-all" data-path="asistencias" href="#"><span class="material-symbols-outlined text-[22px]">military_tech</span><span class="font-label-xs tracking-wider uppercase">Asistencias</span></a></div></nav></body></html>
