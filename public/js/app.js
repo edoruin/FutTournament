@@ -294,6 +294,89 @@
     }).catch(function (e) { tb.innerHTML = '<tr><td class="p-4">' + emptyState(e.message) + '</td></tr>'; });
   }
 
+  /* ---------- Tubería centralizada: combina los 3 CSV en un solo objeto ----------
+     loadAllData() lee equipos + goles + asistencias una sola vez.
+     buildStandings() deriva Pts/PJ/PG/PE/PP/GF por equipo sin extender nada. */
+  function loadAllData() {
+    return Promise.all([
+      fetchCSV('equipos.csv'),
+      fetchCSV('goles.csv'),
+      fetchCSV('asistencias.csv')
+    ]).then(function (texts) {
+      return {
+        equipos: parseCSV(texts[0]).rows.filter(function (r) { return getField(r, ['nombre']); }),
+        goles: parseCSV(texts[1]).rows,
+        asistencias: parseCSV(texts[2]).rows
+      };
+    });
+  }
+
+  function buildStandings(data) {
+    var gfByTeam = {};
+    var names = {};
+    data.goles.forEach(function (r) {
+      var eq = getField(r, ['equipo']);
+      if (!eq) return;
+      var k = norm(eq);
+      gfByTeam[k] = (gfByTeam[k] || 0) + (parseInt(getField(r, ['goles']), 10) || 0);
+      if (!names[k]) names[k] = eq;
+    });
+    var table = {};
+    function ensure(name) {
+      var k = norm(name);
+      if (!table[k]) table[k] = { name: name, pg: 0, pe: 0, pp: 0, gf: 0 };
+      return table[k];
+    }
+    data.equipos.forEach(function (r) {
+      var nombre = getField(r, ['nombre']);
+      var row = ensure(nombre);
+      var st = estadoEquipo(r);
+      var rank = faseRank(st.fase);
+      if (st.label.indexOf('Gan') === 0) row.pg = Math.max(rank, 0);
+      else if (st.label.indexOf('Perdi') === 0) { row.pg = Math.max(rank - 1, 0); row.pp = 1; }
+    });
+    Object.keys(gfByTeam).forEach(function (k) {
+      if (!table[k]) table[k] = { name: names[k], pg: 0, pe: 0, pp: 0, gf: 0 };
+      table[k].gf = gfByTeam[k];
+    });
+    var list = Object.keys(table).map(function (k) {
+      var t = table[k];
+      t.pj = t.pg + t.pe + t.pp;
+      t.pts = t.pg * 3 + t.pe;
+      return t;
+    });
+    list.sort(function (a, b) {
+      if (b.pts !== a.pts) return b.pts - a.pts;
+      if (b.gf !== a.gf) return b.gf - a.gf;
+      if (b.pg !== a.pg) return b.pg - a.pg;
+      return norm(a.name) < norm(b.name) ? -1 : 1;
+    });
+    return list;
+  }
+
+  function renderStandings(tbodyId) {
+    var tb = document.getElementById(tbodyId);
+    if (!tb) return;
+    tb.innerHTML = skeletonRows(8, 1);
+    loadAllData().then(function (data) {
+      var list = buildStandings(data);
+      if (!list.length) { tb.innerHTML = '<tr><td class="p-4">' + emptyState('Aún no hay equipos registrados') + '</td></tr>'; return; }
+      tb.innerHTML = list.map(function (t, i) {
+        var hl = i === 0 ? 'bg-amber-50' : '';
+        return '<tr class="row-anim border-b border-slate-100 hover:bg-slate-50 ' + hl + '" style="--d:' + (i * 60) + 'ms">' +
+          '<td class="p-3 font-bold">' + (i + 1) + '</td>' +
+          '<td class="p-3"><div class="flex items-center gap-2">' + badgeHTML(t.name) +
+          '<span class="font-bold text-[14px]">' + escapeHtml(t.name) + '</span></div></td>' +
+          '<td class="p-3 text-right font-extrabold text-[18px] text-[#0037b0]">' + t.pts + '</td>' +
+          '<td class="p-3 text-center text-[14px]">' + t.pj + '</td>' +
+          '<td class="p-3 text-center text-[14px] text-emerald-700 font-bold">' + t.pg + '</td>' +
+          '<td class="p-3 text-center text-[14px]">' + t.pe + '</td>' +
+          '<td class="p-3 text-center text-[14px] text-red-700">' + t.pp + '</td>' +
+          '<td class="p-3 text-center text-[14px] font-bold">' + t.gf + '</td></tr>';
+      }).join('');
+    }).catch(function () { tb.innerHTML = '<tr><td class="p-4">' + emptyState('No se pudieron cargar los datos') + '</td></tr>'; });
+  }
+
   /* ---------- Bracket simétrico: Cuartos → Semis → Final central ----------
      Modelo solo-frontend: rondas con partidos; cada partido tiene 2 slots y un
      slot de destino. El ganador avanza automáticamente al slot predeterminado.
@@ -383,6 +466,17 @@
     ['m1', 'm2', 'm3', 'm4', 'm5', 'm6', 'm7'].forEach(function (id) {
       matches[id].winner = winnerOf(matches[id], matches, byName);
     });
+    Object.keys(matches).forEach(function (id) {
+      var m = matches[id], f = '';
+      [resolveSlot(m.a, matches).name, resolveSlot(m.b, matches).name].some(function (nm) {
+        if (nm && byName[norm(nm)]) {
+          var ff = getField(byName[norm(nm)], ['fecha_partido', 'fecha']);
+          if (ff) { f = ff; return true; }
+        }
+        return false;
+      });
+      m.fecha = f;
+    });
     return matches;
   }
 
@@ -405,9 +499,8 @@
     var st = m.winner
       ? '<span class="chip chip-final">Definido</span>'
       : '<span class="chip chip-pending">Pendiente</span>';
-    var foot = m.winner
-      ? 'Avanza: <b>' + escapeHtml(m.winner) + '</b>'
-      : 'En espera de ganadores';
+    var foot = (m.winner ? 'Avanza: <b>' + escapeHtml(m.winner) + '</b>' : 'En espera de ganadores') +
+      (m.fecha ? '<br><span class="inline-flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_month</span>' + escapeHtml(m.fecha) + '</span>' : '');
     return '<div class="bmatch reveal' + (isFinal ? ' bmatch-final' : '') + '" id="bm-' + m.id + '" style="--d:' + d + 'ms">' +
       '<div class="bmatch-head"><span class="font-label-xs text-slate-500 uppercase">' + m.id.toUpperCase() + ' · ' + m.round + '</span>' + st + '</div>' +
       slotHTML(m.a, matches, m.winner) + slotHTML(m.b, matches, m.winner) +
@@ -505,6 +598,7 @@
       })(scrollBtns[j]);
     }
     if (page === 'equipos') renderEquipos('equipos-body', 'equipos-count');
+    if (page === 'posiciones') renderStandings('posiciones-body');
     if (page === 'goles') renderGoles('goles-body');
     if (page === 'asistencias') renderAsistencias('asistencias-body');
     if (page === 'index') {
